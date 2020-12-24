@@ -4,18 +4,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
-import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.*;
-import javax.swing.*;
+import java.util.Date;
+   
 
-public class billing extends javax.swing.JFrame{
 
+public class Billing extends javax.swing.JFrame{
+
+	int i;
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField textField_3;
 	private JCheckBox chckbxNewCheckBox;
 	private JCheckBox chckbxNewCheckBox_1;
@@ -31,7 +32,7 @@ public class billing extends javax.swing.JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					billing window = new billing();
+					Billing window = new Billing();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +44,8 @@ public class billing extends javax.swing.JFrame{
 	/**
 	 * Create the application.
 	 */
-	public billing() {
+
+	public Billing() {
 		initialize();
 	}
 
@@ -74,41 +76,32 @@ public class billing extends javax.swing.JFrame{
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Date:");
-		lblNewLabel_2.setBounds(10, 58, 37, 14);
-		frame.getContentPane().add(lblNewLabel_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(42, 55, 86, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		
 		JLabel lblNewLabel_3 = new JLabel("Menu:");
-		lblNewLabel_3.setBounds(10, 102, 37, 14);
+		lblNewLabel_3.setBounds(10, 67, 37, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		chckbxNewCheckBox = new JCheckBox("Coffee");
-		chckbxNewCheckBox.setBounds(31, 123, 97, 23);
+		chckbxNewCheckBox.setBounds(31, 97, 97, 23);
 		frame.getContentPane().add(chckbxNewCheckBox);
 		
 		chckbxNewCheckBox_1 = new JCheckBox("Cold Coffee");
-		chckbxNewCheckBox_1.setBounds(31, 149, 97, 23);
+		chckbxNewCheckBox_1.setBounds(31, 123, 97, 23);
 		frame.getContentPane().add(chckbxNewCheckBox_1);
 		
 		chckbxNewCheckBox_2 = new JCheckBox("Black Coffee");
-		chckbxNewCheckBox_2.setBounds(31, 175, 97, 23);
+		chckbxNewCheckBox_2.setBounds(31, 149, 97, 23);
 		frame.getContentPane().add(chckbxNewCheckBox_2);
 		
 		chckbxNewCheckBox_3 = new JCheckBox("Mocha");
-		chckbxNewCheckBox_3.setBounds(31, 201, 97, 23);
+		chckbxNewCheckBox_3.setBounds(31, 175, 97, 23);
 		frame.getContentPane().add(chckbxNewCheckBox_3);
 		
 		chckbxNewCheckBox_4 = new JCheckBox("Tea");
-		chckbxNewCheckBox_4.setBounds(168, 123, 97, 23);
+		chckbxNewCheckBox_4.setBounds(168, 97, 97, 23);
 		frame.getContentPane().add(chckbxNewCheckBox_4);
 		
 	    chckbxNewCheckBox_5 = new JCheckBox("Black Tea");
-		chckbxNewCheckBox_5.setBounds(168, 149, 97, 23);
+		chckbxNewCheckBox_5.setBounds(168, 123, 97, 23);
 		frame.getContentPane().add(chckbxNewCheckBox_5);
 		
 		JLabel lblNewLabel_5 = new JLabel("Quantity:");
@@ -132,16 +125,20 @@ public class billing extends javax.swing.JFrame{
 		btnNewButton.setBounds(80, 282, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Cancel");
+		JButton btnNewButton_1 = new JButton("Clear");
 		btnNewButton_1.setBounds(236, 282, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		btnNewButton.addActionListener(new ActionListener(){  
+		btnNewButton.addActionListener(new ActionListener(){  		//submit button
 			public void actionPerformed(ActionEvent e)
 			{
-				int orderno = Integer.parseInt(textField_1.getText()); 
+				i++;
+				
+				textField_1.setText(""+i);
 				
 				String custname = textField.getText(); 
+				
+				 Date date = new Date();
 				
 				int qty = Integer.parseInt(textField_3.getText()); 
 				
@@ -173,9 +170,33 @@ public class billing extends javax.swing.JFrame{
 				  
 				// Displays order details 
 				textArea .setText( 
-				        "Hello, your Order Id is: " + orderno 
+				        "Hello, your Order Id is: " + textField_1.getText() 
+				        +"\nDate: " + date.toString()
 				        + "\nName: " + custname 
 				        + "\nAMOUNT PAYABLE IS: " + totalpayable);
+			}  
+			});
+	           
+		btnNewButton_1.addActionListener(new ActionListener(){		//clear button  
+			public void actionPerformed(ActionEvent e)
+			{
+				textField_1.setText(""); 
+				
+				textField.setText(""); 
+				
+				textField_3.setText(""); 
+				
+				  
+				chckbxNewCheckBox.setSelected(false);
+				chckbxNewCheckBox_1.setSelected(false);
+				chckbxNewCheckBox_2.setSelected(false);
+				chckbxNewCheckBox_3.setSelected(false);
+				chckbxNewCheckBox_4.setSelected(false);
+				chckbxNewCheckBox_5.setSelected(false);
+				 
+				  
+				// Displays order details 
+				textArea.setText("");
 			}  
 			});
 	           
