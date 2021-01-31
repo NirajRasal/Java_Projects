@@ -1,0 +1,7 @@
+*.class
+.idea/
+sqlite_Testing.class
+sqlite_Testing.java
+Testing.db
+Billing_System/out
+Billing_System/.idea

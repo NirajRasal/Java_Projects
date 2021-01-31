@@ -250,4 +250,4 @@ public class Billing_system extends javax.swing.JFrame {
 
 }
 
-//TO-Do: Normalize database and add more fields
+//TODO: Normalize database and add more fields
