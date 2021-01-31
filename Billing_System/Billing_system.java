@@ -126,24 +126,36 @@ public class Billing_system extends javax.swing.JFrame {
                 int qty = Integer.parseInt(textField_3.getText());
 
                 double rate = 0;
+                String coffee = "";
+                String coldC = "";
+                String blackC = "";
+                String mocha = "";
+                String Tea = "";
+                String BTea = "";
 
                 if (NewCheckBox.isSelected()) {     //coffee
                     rate = rate+30;
+                    coffee = "Coffee";
                 }
                 if (NewCheckBox_1.isSelected()) {   //cold coffee
                     rate = rate+40;
+                    coldC = "Cold Coffee";
                 }
                 if (NewCheckBox_2.isSelected()) {   //black coffee
                     rate = rate+50;
+                    blackC = "Black Coffee";
                 }
                 if (NewCheckBox_3.isSelected()) {   //Mocha
                     rate = rate+60;
+                    mocha = "Mocha";
                 }
                 if (NewCheckBox_4.isSelected()) {   //Tea
                     rate = rate+20;
+                    Tea = "Tea";
                 }
                 if (NewCheckBox_5.isSelected()) {   //Black Tea
                     rate = rate+30;
+                    BTea = "Black Tea";
                 }
 
                 // Total amount is calculated
@@ -157,6 +169,7 @@ public class Billing_system extends javax.swing.JFrame {
                 textArea.setText("Hello, your Order Id is: " + no +
                         "\nDate: " + date.toString()
                         + "\nName: " + custname +
+                        "\nIteams Ordered:" + coffee + " " + blackC + " " + coldC + " " + mocha + " " + Tea + " " + BTea +
                         "\nAMOUNT PAYABLE IS: " + totalpayable);
 
                 no++;                                                           //autoincrement Order no
@@ -230,3 +243,4 @@ public class Billing_system extends javax.swing.JFrame {
 
 }
 
+//TO-Do: Normalize database and add more fields
