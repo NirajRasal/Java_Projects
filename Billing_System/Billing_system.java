@@ -40,7 +40,7 @@ public class Billing_system extends javax.swing.JFrame {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 444, 470);
+        frame.setBounds(100, 100, 424, 570);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
@@ -105,7 +105,7 @@ public class Billing_system extends javax.swing.JFrame {
         frame.getContentPane().add(lblNewLabel_6);
 
         textArea = new JTextArea();
-        textArea.setBounds(58, 329, 298, 91);
+        textArea.setBounds(58, 329, 300, 185);
         frame.getContentPane().add(textArea);
 
         JButton btnNewButton = new JButton("Submit");
@@ -169,7 +169,13 @@ public class Billing_system extends javax.swing.JFrame {
                 textArea.setText("Hello, your Order Id is: " + no +
                         "\nDate: " + date.toString()
                         + "\nName: " + custname +
-                        "\nIteams Ordered:" + coffee + " " + blackC + " " + coldC + " " + mocha + " " + Tea + " " + BTea +
+                        "\nIteams Ordered:"
+                        + coffee + "\n"
+                        + blackC + "\n"
+                        + coldC + "\n"
+                        + mocha + "\n"
+                        + Tea + "\n"
+                        + BTea +
                         "\nAMOUNT PAYABLE IS: " + totalpayable);
 
                 no++;                                                           //autoincrement Order no
