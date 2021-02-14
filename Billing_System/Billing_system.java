@@ -14,10 +14,6 @@
 
 public class Billing_system extends javax.swing.JFrame {
 
-    /**
-     *
-     */
-    @Serial
     private static final long serialVersionUID = 1L;
     int i;
     private JFrame frame;
@@ -90,17 +86,7 @@ public class Billing_system extends javax.swing.JFrame {
         textField_3.setBounds(66, 240, 86, 20);
         frame.getContentPane().add(textField_3);
         textField_3.setColumns(10);
-        //////////////////////////////////////////////////////////
-
-		/*JLabel lblNewLabel_9 = new JLabel("Order:"); // order id database
-		lblNewLabel_9.setBounds(217, 243, 56, 14);
-		frame.getContentPane().add(lblNewLabel_9);
-		JTextField textField_4 = new JTextField();
-		textField_4.setBounds(256, 240, 86, 20);
-		frame.getContentPane().add(textField_4);
-		textField_4.setColumns(10);*/
-
-        ///////////////////////////////////////////////////////////
+       
         JLabel lblNewLabel_6 = new JLabel("Total Bill:");
         lblNewLabel_6.setBounds(10, 313, 56, 14);
         frame.getContentPane().add(lblNewLabel_6);
@@ -161,25 +147,39 @@ public class Billing_system extends javax.swing.JFrame {
 
                 // Total amount is calculated
                 int totalpayable = (int) (rate * qty);
-                                                                                    //   to get Order no and name
+                                                                                     //   to get Order no and name
 
                 String name=textField.getText();	//name
                 toDatabase(no,name,totalpayable);
 
                 // Displays order details
+              
                 textArea.setText("Hello, your Order Id is: " + no +
                         "\nDate: " + date.toString()
                         + "\nName: " + custname +
-                        "\nIteams Ordered:"
-                        + coffee + "\n"
-                        + blackC + "\n"
-                        + coldC + "\n"
-                        + mocha + "\n"
-                        + Tea + "\n"
-                        + BTea +
-                        "\nAMOUNT PAYABLE IS: " + totalpayable);
+                        "\nIteams Ordered:\n");
 
-                no++;                                                           //autoincrement Order no
+                no++; //autoincrement Order no
+
+                if(coffee == "Coffee") {
+                    textArea.append(coffee+"\n");
+                }
+                if(blackC == "Black Coffee") {
+                    textArea.append(blackC+"\n");
+                }
+                if(coldC == "Cold Coffee") {
+                    textArea.append(coldC+"\n");
+                }
+                if(mocha == "Mocha") {
+                    textArea.append(mocha+"\n");
+                }
+                if(Tea == "Tea") {
+                    textArea.append(Tea+"\n");
+                }
+                if(BTea == "Black Tea") {
+                    textArea.append(BTea+"\n");
+                }
+                textArea.append("\nAMOUNT PAYABLE IS: " + totalpayable);
             }
 
         });
@@ -225,15 +225,20 @@ public class Billing_system extends javax.swing.JFrame {
         try
         {
             //set Databasepassword below and then execute the program
+            java.util.Date javaDate = new java.util.Date();
+            java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
+
             String password="nik1995march";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system",password);
             stmt=con.createStatement();
-            String sql = "INSERT INTO BILL(NO,NAME,AMOUNT) VALUES(?,?,?)";
+            //String sql = "INSERT INTO BILL(NO,NAME,AMOUNT) VALUES(?,?,?)";
+            String sql = "INSERT INTO BILL(NO,NAME,AMOUNT,Order_date) VALUES(?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,no);
             ps.setString(2,name);
             ps.setInt(3,amount);
+            ps.setDate(4,mySQLDate);
             ps.executeUpdate();
             try {
                 ps.close();
@@ -249,5 +254,3 @@ public class Billing_system extends javax.swing.JFrame {
     }
 
 }
-
-//TODO: Normalize database and add more fields
