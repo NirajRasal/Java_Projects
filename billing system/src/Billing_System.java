@@ -25,6 +25,7 @@ public class Billing_System extends javax.swing.JFrame {
     private JCheckBox NewCheckBox_3;
     private JCheckBox NewCheckBox_4;
     private JCheckBox NewCheckBox_5;
+
     private JTextArea textArea;
     int no=1;                       //order id
 
@@ -146,14 +147,13 @@ public class Billing_System extends javax.swing.JFrame {
                 }
 
                 // Total amount is calculated
-                int totalpayable = (int) (rate * qty);
+                int total = (int) (rate * qty);
                 //   to get Order no and name
 
                 String name=textField.getText();	//name
-                toDatabase(no,name,totalpayable);
+                toDatabase(no,name,total);
 
-                // Displays order details
-                // String item_order[coffee,blackC,coldC,mocha,Tea];
+                // Displays order detail
                 textArea.setText("Hello, your Order Id is: " + no +
                         "\nDate: " + date.toString()
                         + "\nName: " + custname +
@@ -179,7 +179,8 @@ public class Billing_System extends javax.swing.JFrame {
                 if(BTea == "Black Tea") {
                     textArea.append(BTea+"\n");
                 }
-                textArea.append("\nAMOUNT PAYABLE IS: " + totalpayable);
+                textArea.append("\nAMOUNT PAYABLE IS: " + total);
+
             }
 
         });
